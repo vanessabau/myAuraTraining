@@ -1,0 +1,27 @@
+<aura:component >
+    
+    <aura:attribute name="item" type="Camping_Item__c"/>
+      <aura:registerEvent name="updateItem" type="c:addItemEvent"/>
+    <!--MARKUP-->
+    <lightning:card title="{!v.item.Name}" iconName="standard:scan_card"
+                    class="{!v.item.Packed__c ?
+                           'slds-theme_success' : ''}">
+            
+        <p class="slds-p-horizontal_small">Name: {!v.item.Name}</p>
+        <p class="slds-p-horizontal_small">Price:{!v.item.Price__c}</p>
+        <p class="slds-p-horizontal_small">Quantity:{!v.item.Quantity__c}</p> 
+        <p class="slds-p-horizontal_small">Packed?:{!v.item.Packed__c}</p>
+    	<p class="slds-p-horizontal_small">
+    	 	<lightning:input type="toggle"
+                         label="Packed?"
+                         name="packed"
+                         class="slds-p-around_small"
+                         checked="{!v.item.Packed__c}" 
+                         messageToggleActive="Yes"
+                         messageToggleInactive="No"
+                         onchange="{!c.clickPacked}"/>
+    	</p>  
+       
+    </lightning:card>
+  
+</aura:component>
